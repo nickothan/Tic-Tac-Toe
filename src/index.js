@@ -2,15 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 
-/*class Square extends React.Component {
-    render() {
-        return (
-            <button className="square" onClick={() => props.onClick()}>
-                {props.value}
-            </button>
-        );
-    }
-}*/
 function Square(props) {
     return (
         <button
@@ -29,6 +20,8 @@ class Board extends React.Component {
         super(props);
         this.state = {
             squares: Array(9).fill(null),
+            /* booleano */
+            xIsNext: true,
         };
     }
 
@@ -36,8 +29,16 @@ class Board extends React.Component {
     handleClick(i) {
         /* Agregamos la inmutabilidad haciendo copias con la propiedad slice() al hacer click*/
         const squares = this.state.squares.slice();
-        squares[i] = "X";
-        this.setState({squares: squares});
+
+        /* Alternar  turnos X y O con if*/
+        squares[i] = this.state.xIsNext ? "X" : "O";
+
+        this.setState({
+            squares: squares,
+
+            /* invertir valor de turnos al dar click*/
+            xIsNext: !this.state.xIsNext,
+        });
     }
 
     /* Haciendo un cuadrado*/
@@ -52,7 +53,8 @@ class Board extends React.Component {
     }
 
     render() {
-        const status = "Next player: X";
+        /*Cambio de  status */
+        const status = "Next player: " + (this.state.xIsNext ? "X" : "O");
 
         /* Datos de rejilla que pasaremos a Square por medio de renderSquare */
         return (
