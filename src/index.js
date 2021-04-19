@@ -60,12 +60,15 @@ class Game extends React.Component {
                     squares: Array(9).fill(null),
                 },
             ],
+            /* Agregamos StepNumber para indicar que empezamos en el turno 0 */
+            stepNumber: 0,
             xIsNext: true,
         };
     }
     /* metodo para aplicar los cambios al hacer click al boton */
     handleClick(i) {
-        const history = this.state.history;
+        /*asegurar que si volvemos en el tiempo y hacemos una jugada el historial futuro se borra */
+        const history = this.state.history.slice(0, this.state.stepNumber + 1);
         const current = history[history.length - 1];
         /* Agregamos la inmutabilidad haciendo copias con la propiedad slice() al hacer click*/
         const squares = current.squares.slice();
@@ -85,20 +88,34 @@ class Game extends React.Component {
                 },
             ]),
 
+            /*Nos aseguramos de no estancarnos en un movimiento */
+            stepNumber: history.length,
+
             /* invertir valor de turnos al dar click*/
             xIsNext: !this.state.xIsNext,
         });
     }
+
+    jumpTo(step) {
+        this.setState({
+            /* actualizar stepNumber  */
+            stepNumber: step,
+            /* Establecer si el numero que vemos es par */
+            xIsNext: step % 2 === 0,
+        });
+    }
+
     render() {
         const history = this.state.history;
-        const current = history[history.length - 1];
+        /*Renderizamos el movimiento seleccionado */
+        const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
 
         /* Mapeando el historial */
         const moves = history.map((step, move) => {
             const desc = move ? "go to move #" + move : "Go to game start";
             return (
-                <li>
+                <li key={move}>
                     <button onClick={() => this.jumpTo(move)}>{desc}</button>
                 </li>
             );
