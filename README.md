@@ -1,5 +1,10 @@
 # Elaboracion de tic-tac-toe
 
+    * Te permite jugar tic-tac-toe,
+    * Indica cuando un jugador ha ganado el juego,
+    * Almacena el historial del juego como va progresando,
+    * Permite a los jugadores revisar el historial del juego y ver versiones anteriores del tablero de juego.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
