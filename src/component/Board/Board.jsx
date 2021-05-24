@@ -7,6 +7,7 @@ class Board extends React.Component {
     /* Haciendo un cuadrado*/
     renderSquare(i) {
         console.log("Props: ", this.props.squares[i])
+
         return (
             <Square
                 value={this.props.squares[i]}
@@ -17,6 +18,7 @@ class Board extends React.Component {
     }
 
     render() {
+
         // ? Datos de rejilla que pasaremos a Square por medio de renderSquare */
         return (
             <Container>
@@ -36,6 +38,7 @@ class Board extends React.Component {
                     {this.renderSquare(8)}
                 </BoardRow>
             </Container>
+
         );
     }
 }

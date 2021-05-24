@@ -1,7 +1,9 @@
 import React from "react";
 import Board from "../Board";
 import calculateWinner from "../calculateWinner";
+
 import { Turno, GameInfo, BtnHistorico, Content, Container } from './styles';
+
 
 class Game extends React.Component {
     /* Establecer estado inicial para Historial de jugadas */
@@ -66,10 +68,12 @@ class Game extends React.Component {
 
         /* Mapeando el historial */
         const moves = history.map((step, move) => {
+
             const desc = move ? "Movimiento  " + move : "Listo para empezar";
             return (
                 <li key={move}>
                     <BtnHistorico onClick={() => this.jumpTo(move)}>{desc}</BtnHistorico>
+
                 </li>
             );
         });
@@ -83,6 +87,7 @@ class Game extends React.Component {
         }
 
         return (
+
             <Container>
                 <h1>Tic Tac Toe</h1>
                 <Content>
@@ -100,6 +105,7 @@ class Game extends React.Component {
                     
                 </Content>
             </Container>
+
         );
     }
 }

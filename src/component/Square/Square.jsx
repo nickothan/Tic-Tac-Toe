@@ -1,3 +1,4 @@
+
 import { Container, Button } from './styles';
 
 function Square(props) {
@@ -11,6 +12,7 @@ function Square(props) {
                 {props.value}
             </Button>
         </Container>
+
     );
 }
 
