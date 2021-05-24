@@ -1,6 +1,7 @@
 import React from "react";
 import Board from "../Board";
 import calculateWinner from "../calculateWinner";
+import { Turno, GameInfo, BtnHistorico, Content, Container } from './styles';
 
 class Game extends React.Component {
     /* Establecer estado inicial para Historial de jugadas */
@@ -65,10 +66,10 @@ class Game extends React.Component {
 
         /* Mapeando el historial */
         const moves = history.map((step, move) => {
-            const desc = move ? "Movimiento  #" + move : "Listo para empezar";
+            const desc = move ? "Movimiento  " + move : "Listo para empezar";
             return (
                 <li key={move}>
-                    <button onClick={() => this.jumpTo(move)}>{desc}</button>
+                    <BtnHistorico onClick={() => this.jumpTo(move)}>{desc}</BtnHistorico>
                 </li>
             );
         });
@@ -82,19 +83,23 @@ class Game extends React.Component {
         }
 
         return (
-            <div className="game">
-                <div className="game-board">
-                    <Board
-                        /* Agregamos componente al dom */
-                        squares={current.squares}
-                        onClick={(i) => this.handleClick(i)}
-                    />
-                </div>
-                <div className="game-info">
-                    <div>{status}</div>
-                    <ol>{moves}</ol>
-                </div>
-            </div>
+            <Container>
+                <h1>Tic Tac Toe</h1>
+                <Content>
+                        <div className="game-board">
+                            <Board
+                                /* Agregamos componente al dom */
+                                squares={current.squares}
+                                onClick={(i) => this.handleClick(i)}
+                                />
+                        </div>
+                        <GameInfo>
+                            <Turno>{status}</Turno>
+                            <ul>{moves}</ul>
+                        </GameInfo>
+                    
+                </Content>
+            </Container>
         );
     }
 }
