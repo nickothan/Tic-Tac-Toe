@@ -27,9 +27,11 @@ class Game extends React.Component {
         const current = history[history.length - 1];
         /* Agregamos la inmutabilidad haciendo copias con la propiedad slice() al hacer click*/
         const squares = current.squares.slice();
+        console.log("Squares::",squares)
 
         /*Ignorar cambios cuando hay un ganador o el cuadro esta lleno */
         if (calculateWinner(squares) || squares[i]) {
+            
             return;
         }
 
@@ -76,7 +78,6 @@ class Game extends React.Component {
                 </li>
             );
         });
-        console.log("winner:: ",winner)
 
         let status;
         /* Imprimiendo resultado turno y ganador en el dom */
