@@ -6,8 +6,6 @@ import { Container,BoardRow } from './styles';
 class Board extends React.Component {
     /* Haciendo un cuadrado*/
     renderSquare(i) {
-        console.log("Props: ", this.props.squares[i])
-
         return (
             <Square
                 value={this.props.squares[i]}
