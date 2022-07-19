@@ -74,4 +74,4 @@ export const BtnHistorico = styled.button`
     color: white;
     border: 1px solid white;
   }
-`;
+`

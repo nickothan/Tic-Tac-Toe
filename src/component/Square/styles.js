@@ -1,3 +1,4 @@
+
 import styled from "styled-components/macro";
 
 export const Container = styled.div`
@@ -36,4 +37,4 @@ export const Button = styled.button`
   &:hover {
     background-color: salmon;
   }
-`;
+`

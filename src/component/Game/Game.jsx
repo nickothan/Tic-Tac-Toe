@@ -99,7 +99,6 @@ class Game extends React.Component {
                                 />
                         </div>
                         <GameInfo>
-                            {console.log(":. status :: ",status)}
                             <Turno status={winner ? true : false}>{status}</Turno>
                             <ul>{moves}</ul>
                         </GameInfo>
