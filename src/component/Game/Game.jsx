@@ -78,6 +78,7 @@ class Game extends React.Component {
                 </li>
             );
         });
+        console.log("winner:: ",winner)
 
         let status;
         /* Imprimiendo resultado turno y ganador en el dom */
