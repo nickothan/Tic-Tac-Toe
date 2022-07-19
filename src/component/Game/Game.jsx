@@ -65,11 +65,10 @@ class Game extends React.Component {
         /*Renderizamos el movimiento seleccionado */
         const current = history[this.state.stepNumber];
         const winner = calculateWinner(current.squares);
-
         /* Mapeando el historial */
         const moves = history.map((step, move) => {
 
-            const desc = move ? "Movimiento  " + move : "Listo para empezar";
+            const desc = move ? "Movimiento  " + move : "Empezar";
             return (
                 <li key={move}>
                     <BtnHistorico onClick={() => this.jumpTo(move)}>{desc}</BtnHistorico>
@@ -77,13 +76,14 @@ class Game extends React.Component {
                 </li>
             );
         });
+        console.log("winner:: ",winner)
 
         let status;
         /* Imprimiendo resultado turno y ganador en el dom */
         if (winner) {
-            status = "Ganador: " + winner;
+            status = "El ganador es " + winner;
         } else {
-            status = "Siguiente jugador: " + (this.state.xIsNext ? "X" : "O");
+            status = " jugador: " + (this.state.xIsNext ? " X" : " O");
         }
 
         return (
@@ -99,7 +99,8 @@ class Game extends React.Component {
                                 />
                         </div>
                         <GameInfo>
-                            <Turno>{status}</Turno>
+                            {console.log(":. status :: ",status)}
+                            <Turno status={winner ? true : false}>{status}</Turno>
                             <ul>{moves}</ul>
                         </GameInfo>
                     
